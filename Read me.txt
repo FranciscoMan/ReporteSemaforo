@@ -1,0 +1,34 @@
+El código es muy sencillo de entender, así que solo será limitado a explicar algunas cosas, ya que otras sin obvias
+
+pv es led verde para peatones
+pr es led rojo para peatones
+sv es led ver para semáforo
+sa es led amarillo para semáforo
+sr es led rojo para semáforo
+
+Estos a su vez van respectivamente a las siguientes entradas digitales del arduino:
+2, 4, 5, 6, 7.
+
+La entrada del potenciómetro será en la entrada analógica A0.
+
+valorPot es la variable para el valor del potenciómetro.
+
+parpadeo será usado como variable para la función del map, y a su vez para el tiempo del delay.
+
+Boton=8 es la variable del push button conectado a la entrada 8 digital.
+
+En el setUp 
+se deja todas esa variables como salida para que ya que reciben una señal que permite realizar alguna acción por esa razón el OUTPUT.
+
+el Serial.begin(9600) es código que permite iniciar la comunicación serial con el potenciómetro y la máquina.
+
+En las primeras líneas del loop se le el valor del potenciómetro y se almacena en la variablePot.
+
+parpadeo lo que hace con la función map es tomar el valor del potenciómetro y como si fue un if anidado establece un rango que podrá tomar esa variable con respecto al movimiento del potenciómetro.
+
+el siguiente es un if que lee la entrada del botón si este manda la señal en alto de inmediato entrara al método cambioLuz().
+
+Lo que hace el método cambioLuz() es sencillo mediante las variables asignadas en un inicio mandaran las salidas a cada led como se aprecia en Alto y Bajo; o sea, HIGH y LOW, con sus respectivos delay y el valor que tomo la variable parpadeo del potenciómetro.
+Así de esta manera se hace toda la secuencia de cambios tanto para el semáforo peatonal como el semáforo para autos.
+
+Una vez terminado el método se regresa al loop donde esperara que se presione el botón para activar otra vez la secuencia de cambioLuz().
